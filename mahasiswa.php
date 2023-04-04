@@ -40,21 +40,23 @@ $dataMahasiswa = new Mahasiswa();
 // mengambil seluruh data mahasiswa
 $result = $dataMahasiswa->tampilData();
 $no = 1;
-if (!empty($result)) {
-    foreach ($result as $data) {
-        echo "  <tr>
-                                <td >$no</td>
-                                <td >$data[nama]</td>
-                                <td >$data[npm]</td>
-                                <td >$data[tgl_lahir]</>
-                                <td >$data[jenis_kelamin]</td>
-                                <td >$data[alamat]</td>
-                                <td > HAPUS | EDIT</td>
-                                </tr> ";
-        ++$no;
-    }
-}
-?>
+foreach ($result as $data) {
+    ?>
+    <tr>
+        <td><?php echo $no; ?></td>
+        <td><?php echo $data['npm']; ?></td>
+        <td><?php echo $data['nama']; ?></td>
+        <td><?php echo $data['tgl_lahir']; ?></>
+        <td><?php echo $data['jenis_kelamin']; ?></td>
+        <td><?php echo $data['alamat']; ?></td>
+        <td> 
+            <a href="update.php?id=<?php echo $data['id']; ?>" class='btn btn-info'><i class="fas fa-edit"></i></a>
+
+            <a data-toggle="tooltip" data-placement="top" title="Hapus" class="btn btn-danger" onclick="return hapusDataMahasiswa()"><i class="fas fa-trash"></i></a>
+        </td>
+    </tr>
+    <?php ++$no; ?>
+<?php } ?>
 
             </tbody>
           
