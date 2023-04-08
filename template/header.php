@@ -18,6 +18,10 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 
+  <link href="dist/css/datepicker.min.css" rel="stylesheet">
+  <!-- sweet alert -->
+  <script src="dist/sweetalert2.all.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

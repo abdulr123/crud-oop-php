@@ -16,7 +16,52 @@
               <li class="breadcrumb-item active">Data Mahasiswa</li>
             </ol>
           </div><!-- /.col -->
+          
         </div><!-- /.row -->
+        
+        <div class="mb-3">
+          <a href="tambahdata.php" class='btn btn-success'><i class="fas fa-plus"></i> Tambah Data</a>
+        </div>
+        
+
+        <?php
+      if (empty($_GET['alert'])) {
+          echo '';
+      } elseif ($_GET['alert'] == 1) { ?>
+        <script>
+          Swal.fire(
+            'Gagal!',
+            'Terjadi kesalahan',
+            'error'
+          );
+        </script>
+      <?php } elseif ($_GET['alert'] == 2) { ?>
+        <script>
+          Swal.fire(
+            'Sukses!',
+            'Data mahasiswa berhasil disimpan',
+            'success'
+          );
+        </script>
+      <?php } elseif ($_GET['alert'] == 3) { ?>
+        <script>
+          Swal.fire(
+            'Sukses!',
+            'Data mahasiswa berhasil diubah',
+            'success'
+          );
+        </script>
+      <?php } elseif ($_GET['alert'] == 4) { ?>
+        <script>
+          Swal.fire(
+            'Sukses!',
+            'Data mahasiswa berhasil dihapus',
+            'success'
+          );
+        </script>
+      <?php } ?>
+
+
         <table class="table table-striped table-hover" id="dataTables-example">
           <!--Judul Tabel-->
           <thead>
@@ -41,12 +86,16 @@ $dataMahasiswa = new Mahasiswa();
 $result = $dataMahasiswa->tampilData();
 $no = 1;
 foreach ($result as $data) {
+    $tanggal = $data['tgl_lahir'];
+    $tgl = explode('-', $tanggal);
+    $tanggal_lahir = $tgl[2].'-'.$tgl[1].'-'.$tgl[0];
     ?>
+    
     <tr>
         <td><?php echo $no; ?></td>
         <td><?php echo $data['npm']; ?></td>
         <td><?php echo $data['nama']; ?></td>
-        <td><?php echo $data['tgl_lahir']; ?></>
+        <td><?php echo $tanggal_lahir; ?></>
         <td><?php echo $data['jenis_kelamin']; ?></td>
         <td><?php echo $data['alamat']; ?></td>
         <td> 
