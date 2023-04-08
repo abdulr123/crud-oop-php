@@ -30,5 +30,27 @@
 <!-- AdminLTE for demo purposes -->
 
 <script src="dist/js/pages/dashboard.js"></script>
+
+<script src="dist/js/bootstrap-datepicker.min.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+      //datepicker plugin
+      $('.date-picker').datepicker({
+        autoclose: true,
+        todayHighlight: true
+      });
+      // toolip
+      $('[data-toggle="tooltip"]').tooltip();
+      $('#dataTables-example').dataTable({
+        "lengthMenu": [
+          [5, 10, 25, 50, -1],
+          [5, 10, 25, 50, "All"]
+        ],
+        "pageLength": 5
+      });
+    })
+  </script>
+
 </body>
 </html>
