@@ -1,5 +1,4 @@
 <!-- Aplikasi CRUD -->
-
 <?php
 // memanggil file mahasiswa.php
 include 'class/mahasiswa.php';
