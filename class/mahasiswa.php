@@ -64,6 +64,31 @@ class Mahasiswa
         $mysqli->close();
     }
 
+    // Method untuk mengambil data mahasiswa berdasarkan nim
+    public function ambilData($id)
+    {
+        // memanggil file database
+        include 'class/koneksi.php';
+
+        // membuat objek dengan nama $db
+        $db = new Database();
+
+        // membuka koneksi ke database
+        $mysqli = $db->connect();
+
+        // sql statment untuk mengambil data mahasiswa berdasarkan nim
+        $sql = "SELECT * FROM mahasiswa WHERE id = '$id'";
+
+        $result = $mysqli->query($sql);
+        $data = $result->fetch_assoc();
+
+        // menutup koneksi database
+        $mysqli->close();
+
+        // nilai kembalian dalam bentuk array
+        return $data;
+    }
+
     public function updateData($npm, $nama, $tanggal_lahir, $jenis_kelamin, $alamat)
     {
         // memanggil file database
