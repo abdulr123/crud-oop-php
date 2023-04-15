@@ -54,7 +54,12 @@
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
-        <table class="table table-striped table-hover" id="dataTables-example">
+
+        <div class="class">
+        <a href="tambahdata.php" class='btn btn-info'><i class="fas fa-plus"></i> Tambah Data</a>
+        </div>
+
+        <table class="table table-striped table-hover mt-3" id="dataTables-example">
           <!--Judul Tabel-->
           <thead>
             <tr>
