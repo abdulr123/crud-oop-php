@@ -26,7 +26,7 @@ if (isset($id)) {
     $dataMahasiswa = new mahasiswa();
 
     // mengambil seluruh data mahasiswa dengan method ambilData
-    $result = $dataMahasiswa->tampilData($id);
+    $result = $dataMahasiswa->ambilData($id);
 
     $npm = $result['npm'];
     $nama = $result['nama'];
