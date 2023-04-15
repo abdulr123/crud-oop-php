@@ -124,4 +124,33 @@ class Mahasiswa
         // menutup koneksi database
         $mysqli->close();
     }
+
+    public function hapusData($npm)
+    {
+        // memanggil file database.php
+        include 'koneksi.php';
+
+        // membuat objek db dengan nama $db
+        $db = new Database();
+
+        // membuka koneksi ke database
+        $mysqli = $db->connect();
+
+        // sql statement untuk delete data mahasiswa
+        $sql = "DELETE FROM mahasiswa WHERE npm = '$npm'";
+
+        $result = $mysqli->query($sql);
+
+        // cek hasil query
+        if ($result) {
+            /* jika data berhasil disimpan alihkan ke halaman siswa dan tampilkan pesan = 4 */
+            header('Location: mahasiswa.php?alert=4');
+        } else {
+            /* jika data gagal disimpan alihkan ke halaman siswa dan tampilkan pesan = 1 */
+            header('Location: mahasiswa.php?alert=1');
+        }
+
+        // menutup koneksi database
+        $mysqli->close();
+    }
 }
