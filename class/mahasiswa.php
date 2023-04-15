@@ -63,4 +63,40 @@ class Mahasiswa
         // menutup koneksi database
         $mysqli->close();
     }
+
+    public function updateData($npm, $nama, $tanggal_lahir, $jenis_kelamin, $alamat)
+    {
+        // memanggil file database
+        include 'koneksi.php';
+
+        // membuat objek db dengan nama $db
+        $db = new Database();
+
+        // membuka koneksi ke database
+        $mysqli = $db->connect();
+
+        $nama = $mysqli->real_escape_string($nama);
+        $alamat = $mysqli->real_escape_string($alamat);
+
+        // sql statement untuk update data mahasiswa
+        $sql = "UPDATE mahasiswa SET nama       = '$nama',
+                                    tgl_lahir       = '$tanggal_lahir',
+                                    jenis_kelamin   = '$jenis_kelamin',
+                                    alamat       = '$alamat'
+                              WHERE npm            = '$npm'";
+
+        $result = $mysqli->query($sql);
+
+        // cek hasil query
+        if ($result) {
+            /* jika data berhasil diubah alihkan ke halaman index.php dan tampilkan pesan = 3 */
+            header('Location: mahasiswa.php?alert=3');
+        } else {
+            /* jika data gagal diubah alihkan ke halaman index.php dan tampilkan pesan = 1 */
+            header('Location: mahasiswa.php?alert=1');
+        }
+
+        // menutup koneksi database
+        $mysqli->close();
+    }
 }
