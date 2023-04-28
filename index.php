@@ -103,5 +103,6 @@
   </div>
   <!-- /.content-wrapper -->
   
-
+  
+  <!-- footer -->
   <?php include 'template/footer.php'; ?>
